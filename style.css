@@ -407,18 +407,34 @@ html, body {
 }
 
 /* ========== 际遇星盘时光轴 ========== */
+/* ========== 中央双人合照区域（调整间距） ========== */
+.couple-section {
+    position: absolute;
+    top: 28%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5vh; /* 合照到星盘间距 = 页面高度5% */
+}
+
+/* ========== 际遇星盘时光轴 ========== */
 .timeline {
     text-align: center;
     animation: timelineIn 1s ease-out 3.8s backwards;
+    position: relative;
+    z-index: 30;
 }
 
 .timeline-label {
     font-size: 12px;
-    color: #fff;
+    color: #a33d70;
     letter-spacing: 3px;
-    margin-bottom: 10px;
-    opacity: 0.85;
-    text-shadow: 0 0 4px rgba(255,255,255,0.6);
+    margin-bottom: 8px;
+    font-weight: bold;
+    text-shadow: 0 0 6px rgba(255,255,255,0.8);
 }
 
 .timeline-dots {
@@ -427,6 +443,23 @@ html, body {
     height: 180px;
     margin: 0 auto;
     animation: wheelRotate 30s linear infinite;
+    border: 1.5px dashed rgba(220, 100, 150, 0.5);
+    border-radius: 50%;
+}
+
+/* 磨砂圆盘底 */
+.timeline-dots::before {
+    content: '';
+    position: absolute;
+    top: -22px;
+    left: -22px;
+    right: -22px;
+    bottom: -22px;
+    background: radial-gradient(circle, rgba(255,255,255,0.55) 0%, rgba(255,240,248,0.35) 60%, transparent 100%);
+    backdrop-filter: blur(4px);
+    border-radius: 50%;
+    z-index: -1;
+    box-shadow: 0 0 25px rgba(255, 180, 210, 0.3);
 }
 
 @keyframes wheelRotate {
@@ -439,39 +472,56 @@ html, body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 32px;
+    font-size: 38px;
     color: #fff;
-    filter: drop-shadow(0 0 10px rgba(255,255,255,0.9)) drop-shadow(0 0 20px rgba(255,180,210,0.7));
+    filter: 
+        drop-shadow(0 0 10px rgba(255,255,255,0.95))
+        drop-shadow(0 0 20px rgba(255,150,190,0.85))
+        drop-shadow(0 0 35px rgba(255,120,170,0.5));
     animation: centerPulse 2.5s ease-in-out infinite;
     z-index: 2;
 }
 
 @keyframes centerPulse {
-    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
-    50%      { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.85; }
+    50%      { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
 }
 
 .timeline-dot {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 11px;
-    height: 11px;
-    margin-left: -5.5px;
-    margin-top: -5.5px;
+    width: 16px;
+    height: 16px;
+    margin-left: -8px;
+    margin-top: -8px;
     border-radius: 50%;
-    background: rgba(255,255,255,0.55);
-    box-shadow: 0 0 6px rgba(255,255,255,0.6);
+    background: #e85a95;
+    border: 2px solid #fff;
+    box-shadow: 0 0 8px rgba(232, 90, 149, 0.6);
     transition: all 0.3s ease;
     cursor: pointer;
 }
 
 .timeline-dot.lit {
     background: #fff;
-    box-shadow: 0 0 12px rgba(255,255,255,0.95), 0 0 22px rgba(255,180,210,0.85);
-    transform: scale(1.6) !important;
+    border-color: #ff7ba8;
+    box-shadow: 
+        0 0 14px rgba(255,255,255,0.95),
+        0 0 25px rgba(255, 150, 190, 0.9),
+        0 0 40px rgba(255, 120, 170, 0.6);
+    transform: scale(1.4) !important;
 }
 
+/* ========== 底部寄语（调整间距） ========== */
+.bottom-message {
+    position: absolute;
+    bottom: 8%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 20;
+}
 /* ========== 歌曲详情弹窗 ========== */
 .song-modal {
     position: fixed;
