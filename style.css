@@ -323,7 +323,7 @@ html, body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 18px;
+    gap: 10px;
 }
 
 .polaroid-frame {
@@ -408,17 +408,7 @@ html, body {
 
 /* ========== 际遇星盘时光轴 ========== */
 /* ========== 中央双人合照区域（调整间距） ========== */
-.couple-section {
-    position: absolute;
-    top: 28%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5vh; /* 合照到星盘间距 = 页面高度5% */
-}
+
 
 /* ========== 际遇星盘时光轴 ========== */
 .timeline {
