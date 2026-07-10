@@ -406,9 +406,6 @@ html, body {
     text-shadow: 0 0 6px rgba(255, 180, 210, 0.6);
 }
 
-/* ========== 际遇星盘时光轴 ========== */
-/* ========== 中央双人合照区域（调整间距） ========== */
-
 
 /* ========== 际遇星盘时光轴 ========== */
 .timeline {
@@ -416,13 +413,14 @@ html, body {
     animation: timelineIn 1s ease-out 3.8s backwards;
     position: relative;
     z-index: 30;
+    padding-top: 10px;
 }
 
 .timeline-label {
-    font-size: 12px;
+    font-size: 14px;
     color: #a33d70;
     letter-spacing: 3px;
-    margin-bottom: 8px;
+    margin-bottom: 20px;
     font-weight: bold;
     text-shadow: 0 0 6px rgba(255,255,255,0.8);
 }
