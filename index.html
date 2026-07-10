@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>极禹婚礼</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 背景音乐 -->
+    <audio id="bgMusic" loop>
+        <source src="bite me.ogg" type="audio/ogg">
+    </audio>
+
+    <!-- 开屏 -->
+    <div id="splash" class="splash">
+        <div class="splash-glow"></div>
+        <div class="splash-content">
+            <div class="splash-deco left">✦</div>
+            <h1 class="splash-title">欢迎来参加<br>极禹的婚礼</h1>
+            <div class="splash-sub">— 际遇星 恭贺 —</div>
+            <div class="splash-deco right">✦</div>
+        </div>
+        <div class="splash-stars"></div>
+    </div>
+
+    <!-- 星星氛围层 -->
+    <div id="starsLayer" class="stars-layer"></div>
+
+    <!-- 大际遇星层 -->
+    <div id="bigStarsLayer" class="big-stars-layer"></div>
+
+    <!-- 歌曲碎片+花瓣雨层 -->
+    <div id="songRain" class="song-rain"></div>
+
+    <!-- 主页面 -->
+    <div id="mainPage" class="main-page hidden">
+        <!-- 左上角请柬按钮 -->
+        <button id="inviteBtn" class="invite-btn" title="婚礼请柬">💌</button>
+
+        <!-- 右上角音乐按钮 -->
+        <div class="music-wrap">
+            <button id="musicBtn" class="music-btn" title="选择BGM">🎵</button>
+            <div id="musicMenu" class="music-menu hidden">
+                <div class="menu-item active" data-src="bite me.ogg">Bite Me</div>
+                <div class="menu-item" data-src="不值得.ogg">不值得</div>
+                <div class="menu-item" data-src="连名带姓.ogg">连名带姓</div>
+                <div class="menu-item" data-src="流浪记.ogg">流浪记</div>
+            </div>
+        </div>
+
+        <!-- 左下角签到按钮 -->
+        <button id="checkinBtn" class="checkin-btn" title="际遇星签到">⭐</button>
+
+        <!-- 中央双人合照 -->
+        <div class="couple-section">
+            <div class="polaroid-frame" id="couplePhoto">
+                <div class="polaroid-inner">
+                    <div class="photo-left">
+                        <img src="zj.jpg" alt="张极" onerror="this.style.display='none';this.parentNode.innerHTML+='<div class=photo-placeholder>张极</div>'">
+                    </div>
+                    <div class="heart-between">💗</div>
+                    <div class="photo-right">
+                        <img src="zzy.jpg" alt="张泽禹" onerror="this.style.display='none';this.parentNode.innerHTML+='<div class=photo-placeholder>张泽禹</div>'">
+                    </div>
+                </div>
+                <div class="polaroid-bottom">
+                    <span class="names">张极 & 张泽禹</span>
+                </div>
+            </div>
+
+            <!-- 17首歌时光轴 -->
+            <div class="timeline">
+                <div class="timeline-label">— 我们的歌 · 八年十七首 —</div>
+                <div class="timeline-dots" id="timelineDots"></div>
+            </div>
+        </div>
+
+        <!-- 底部寄语 -->
+        <div class="bottom-message">
+            <p class="main-oath">今天我终于陪你把异乡走成了故乡</p>
+            <p class="signature">— 极禹 · 2026 —</p>
+        </div>
+
+        <!-- 爱心爆炸容器 -->
+        <div id="heartBurst" class="heart-burst"></div>
+
+        <!-- 请柬侧边栏 -->
+        <div id="inviteSidebar" class="invite-sidebar">
+            <div class="invite-card">
+                <div class="invite-corner tl"></div>
+                <div class="invite-corner tr"></div>
+                <div class="invite-corner bl"></div>
+                <div class="invite-corner br"></div>
+                
+                <h2 class="invite-title">✦ 极禹婚礼邀请函 ✦</h2>
+                <div class="invite-line"></div>
+                
+                <p class="invite-to">致 · 每一颗际遇星</p>
+                
+                <div class="invite-body">
+                    <p>谨于吉日良辰</p>
+                    <p>为 张极 & 张泽禹</p>
+                    <p>举 行 婚 典</p>
+                </div>
+                
+                <div class="invite-names">
+                    <span class="inv-name left">张 极</span>
+                    <span class="inv-and">&</span>
+                    <span class="inv-name right">张泽禹</span>
+                </div>
+                
+                <div class="invite-body small">
+                    <p>八年相伴 · 从试训到舞台</p>
+                    <p>敬备喜筵 · 恭请光临</p>
+                </div>
+                
+                <div class="invite-line"></div>
+                
+                <p class="invite-oath">
+                    今天我终于陪你<br>
+                    把异乡走成了故乡
+                </p>
+                
+                <p class="invite-sign">— 际遇星 同贺 —</p>
+                
+                <button class="invite-close" id="inviteClose">×</button>
+            </div>
+        </div>
+
+        <!-- 签到弹窗 -->
+        <div id="checkinModal" class="checkin-modal hidden">
+            <div class="checkin-card">
+                <h3>⭐ 签到成功 ⭐</h3>
+                <p class="checkin-days">今日是你陪伴极禹的第 <span id="daysCount">1</span> 天</p>
+                <p class="checkin-total">累计签到：<span id="totalCheckin">1</span> 次</p>
+                <p class="checkin-word">「极禹八年 岁岁年年」</p>
+                <button class="checkin-ok" id="checkinOk">好哒 💗</button>
+            </div>
+        </div>
+
+        <!-- 彩蛋弹窗 -->
+        <div id="easterModal" class="easter-modal hidden">
+            <div class="easter-text">极禹八年 岁岁年年</div>
+            <div class="easter-sub">✦ 际遇星永远在 ✦</div>
+        </div>
+
+        <!-- 歌曲详情弹窗 -->
+        <div id="songModal" class="song-modal hidden">
+            <div class="song-modal-card">
+                <div class="song-img-wrap">
+                    <img id="songImg" src="" alt="" onerror="this.style.display='none'">
+                </div>
+                <p id="songName" class="song-name"></p>
+                <button class="song-close" id="songClose">×</button>
+            </div>
+        </div>
+        <!-- 花瓣撒花容器 -->
+        <div id="petalBurst" class="petal-burst"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
