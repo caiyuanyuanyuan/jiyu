@@ -253,14 +253,14 @@ html, body {
     transform: scale(0.9);
 }
 
-.invite-btn { top: 20px; left: 20px; }
+.invite-btn { top: 20px; left: 14px; }
 .checkin-btn { bottom: 30px; left: 20px; }
 
 /* ========== 音乐按钮+菜单 ========== */
 .music-wrap {
     position: fixed;
     top: 20px;
-    right: 20px;
+    right: 14px;
     z-index: 200;
 }
 
@@ -1306,8 +1306,8 @@ html, body {
 /* 清空记录按钮 */
 .reset-btn {
     position: fixed;
-    top: 20px;
-    right: 74px;
+    top: 80px;
+    right: 14px;
     width: 44px;
     height: 44px;
     border: none;
