@@ -316,9 +316,9 @@ html, body {
 /* ========== 中央双人合照 ========== */
 .couple-section {
     position: absolute;
-    top: 16%;
+    top: 2%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -409,15 +409,19 @@ html, body {
 
 /* ========== 际遇星盘时光轴 ========== */
 .timeline {
+    position: absolute;
+    top: 34%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
     text-align: center;
     animation: timelineIn 1s ease-out 3.8s backwards;
-    position: relative;
     z-index: 30;
     padding-top: 10px;
 }
 
 .timeline-label {
-    font-size: 14px;
+    font-size: 16px;
     color: #a33d70;
     letter-spacing: 3px;
     margin-bottom: 20px;
@@ -439,10 +443,10 @@ html, body {
 .timeline-dots::before {
     content: '';
     position: absolute;
-    top: -22px;
-    left: -22px;
-    right: -22px;
-    bottom: -22px;
+    top: -14px;
+    left: -14px;
+    right: -14px;
+    bottom: -14px;
     background: radial-gradient(circle, rgba(255,255,255,0.55) 0%, rgba(255,240,248,0.35) 60%, transparent 100%);
     backdrop-filter: blur(4px);
     border-radius: 50%;
