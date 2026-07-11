@@ -109,7 +109,7 @@ const lyricData = {
             { text: '不值得____', answer: '哭泣' },
             { text: '这段感情早就应该放弃', answer: '' },
             { text: '早就不该让我浪费时间找____', answer: '奇迹' },
-            { text: '我决定不为你而毁了心 放弃____', answer: '爱你' }
+            { text: '我决定不为你而____ 放弃爱你', answer: '毁了心' }
         ]
     },
     15: { // 过
@@ -823,3 +823,16 @@ function spawnPetalConfetti() {
         setTimeout(() => p.remove(), 4500);
     }
 }
+
+// 清空解锁记录
+document.getElementById('resetBtn').addEventListener('click', function() {
+    if (!confirm('确定要清空所有解锁记录、连线进度、歌词通关记录吗？')) return;
+    
+    localStorage.removeItem('jiyu_unlocked');
+    localStorage.removeItem('jiyu_sequence');
+    localStorage.removeItem('jiyu_lyric_done');
+    localStorage.removeItem('jiyu_special_bg');
+    
+    alert('已清空所有记录！页面即将刷新');
+    location.reload();
+});
