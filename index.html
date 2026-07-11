@@ -15,12 +15,13 @@
     <!-- 开屏 -->
     <div id="splash" class="splash">
         <div class="splash-glow"></div>
-        <div class="splash-content">
-            <div class="splash-deco left">✦</div>
-            <h1 class="splash-title">欢迎来参加<br>极禹的婚礼</h1>
+<div class="splash-content">
+    <div class="splash-deco left">✦</div>
+               <h1 class="splash-title">欢迎来参加<br>极禹的婚礼</h1>
             <div class="splash-sub">— 际遇星 恭贺 —</div>
-            <div class="splash-deco right">✦</div>
-        </div>
+    <h3 class="splash-sub" id="splashTypewriter"></h3>
+    <div class="splash-deco right">✦</div>
+</div>
         <div class="splash-stars"></div>
     </div>
 
@@ -49,8 +50,6 @@
             </div>
         </div>
 
-        <!-- 左下角签到按钮 -->
-        <button id="checkinBtn" class="checkin-btn" title="际遇星签到">⭐</button>
 
         <!-- 中央双人合照 -->
         <div class="couple-section">
@@ -70,13 +69,23 @@
             </div>
 
             <!-- 17首歌时光轴 -->
-            <div class="timeline">
-                <div class="timeline-label">— 我们的歌 · 八年十七首 —</div>
-                <div class="timeline-dots" id="timelineDots"></div>
-            </div>
+<div class="timeline">
+    <div class="timeline-label">— 我们的歌 · 八年十七首 —</div>
+    <div class="timeline-dots" id="timelineDots">
+        <!-- 连线画布 -->
+        <svg class="line-canvas" id="lineCanvas"></svg>
+    </div>
+    <!-- 新增以下部分 -->
+    <div class="progress-wrap">
+        <span class="progress-text">已解锁 <span id="unlockCount">0</span>/17 首歌</span>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
         </div>
+    </div>
+    <div class="unlock-cards" id="unlockCards"></div>
+</div>
 
-        <!-- 底部寄语 -->
+        <!-- 底部寄 -->
         <div class="bottom-message">
             <p class="main-oath">今天我终于陪你把异乡走成了故乡</p>
             <p class="signature">— 极禹 · 2026 —</p>
@@ -97,6 +106,10 @@
                 <div class="invite-line"></div>
                 
                 <p class="invite-to">致 · 每一颗际遇星</p>
+<p class="invite-host">
+
+    <span>诚邀    <input type="text" id="hostNameInput" class="host-name-input" placeholder="请输入昵称" maxlength="8">参加极禹婚礼</span>
+</p>
                 
                 <div class="invite-body">
                     <p>谨于吉日良辰</p>
@@ -128,22 +141,18 @@
             </div>
         </div>
 
-        <!-- 签到弹窗 -->
-        <div id="checkinModal" class="checkin-modal hidden">
-            <div class="checkin-card">
-                <h3>⭐ 签到成功 ⭐</h3>
-                <p class="checkin-days">今日是你陪伴极禹的第 n+ <span id="daysCount">1</span> 天</p>
-                <p class="checkin-total">累计签到：n+ <span id="totalCheckin">1</span> 次</p>
-                <p class="checkin-word">「极禹八年 岁岁年年」</p>
-                <button class="checkin-ok" id="checkinOk">好哒 💗</button>
-            </div>
-        </div>
-
-        <!-- 彩蛋弹窗 -->
-        <div id="easterModal" class="easter-modal hidden">
-            <div class="easter-text">极禹八年 岁岁年年</div>
-            <div class="easter-sub">✦ 际遇星永远在 ✦</div>
-        </div>
+<!-- 替换原来的彩蛋弹窗 -->
+<div id="easterModal" class="easter-modal hidden">
+    <div class="fireworks-container" id="fireworksContainer"></div>
+    <div class="easter-content">
+        <p class="easter-line">感谢你陪我们走过这一路</p>
+        <p class="easter-line">从2018年盛夏的试训教室，到2026年</p>
+        <p class="easter-line">十七首歌，八年时光，每一个音符都刻着并肩的模样</p>
+        <p class="easter-line">从青涩到坦荡，从异乡到故乡</p>
+        <p class="easter-line">所幸山海相隔的朝暮，都成了岁岁年年的共度</p>
+        <p class="easter-line">际遇星常在，极禹永并肩</p>
+    </div>
+</div>
 
         <!-- 歌曲详情弹窗 -->
         <div id="songModal" class="song-modal hidden">
@@ -151,13 +160,29 @@
                 <div class="song-img-wrap">
                     <img id="songImg" src="" alt="" onerror="this.style.display='none'">
                 </div>
-                <p id="songName" class="song-name"></p>
-                <button class="song-close" id="songClose">×</button>
+<p id="songName" class="song-name"></p>
+<button class="lyric-challenge-btn" id="lyricChallengeBtn">来挑战歌词 ✨</button>
+<button class="song-close" id="songClose">×</button>
             </div>
         </div>
         <!-- 花瓣撒花容器 -->
         <div id="petalBurst" class="petal-burst"></div>
     </div>
+
+<!-- 歌词挑战弹窗 -->
+<div id="lyricModal" class="lyric-modal hidden">
+    <div class="lyric-modal-card">
+        <h3 class="lyric-title">歌词猜猜看</h3>
+        <div class="lyric-content" id="lyricContent"></div>
+        <div class="lyric-result" id="lyricResult"></div>
+        <div class="lyric-btns">
+            <button class="lyric-submit" id="lyricSubmit">提交答案</button>
+            <button class="lyric-retry hidden" id="lyricRetry">再试一次</button>
+        </div>
+        <button class="lyric-close" id="lyricClose">×</button>
+    </div>
+</div>
+
 
     <script src="script.js"></script>
 </body>
