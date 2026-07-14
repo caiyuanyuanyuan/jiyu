@@ -410,7 +410,7 @@ html, body {
 /* ========== 际遇星盘时光轴 ========== */
 .timeline {
     position: absolute;
-    top: 34%;
+    top: 32%;
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
@@ -461,7 +461,7 @@ html, body {
 
 .timeline-center {
     position: absolute;
-    top: 50%;
+    top: 48%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 38px;
@@ -481,7 +481,7 @@ html, body {
 
 .timeline-dot {
     position: absolute;
-    top: 50%;
+    top: 48%;
     left: 50%;
     width: 16px;
     height: 16px;
@@ -1355,8 +1355,8 @@ body.special-bg::before {
 /* ====================== 婚宴页面｜浅粉色梦幻主题 ====================== */
 .seat-btn{
     position: fixed;
-    right: 20px;
-    bottom: 80px;
+    left: 14px;
+    top: 80px;
     width: 60px;
     height: 60px;
     border-radius: 50%;
