@@ -49,7 +49,7 @@
                 <div class="menu-item" data-src="流浪记.ogg">流浪记</div>
             </div>
         </div>
-
+<button id="seatBtn" class="seat-btn" title="去入席🪑">🪑去入席</button>
 <button id="resetBtn" class="reset-btn" title="清空所有解锁记录">🔄</button>
 
         <!-- 中央双人合照 -->
@@ -183,7 +183,109 @@
         <button class="lyric-close" id="lyricClose">×</button>
     </div>
 </div>
+<!-- ========== 婚宴席位页面｜浅粉色梦幻 ========== -->
+<div id="banquetPage" class="banquet-page hidden">
+    <!-- 控制按钮 -->
+    <button class="banquet-back-btn" id="banquetBackBtn">← 返回主页</button>
+    <button class="refresh-seat-btn" id="refreshSeatBtn">🔄 刷新座位</button>
 
+    <!-- 顶部婚礼舞台 25vh -->
+    <div class="wedding-stage">
+        <div class="stage-title">💖婚礼舞台💖</div>
+        <div class="stage-member-group hidden" id="stageMemberGroup">
+            <span class="stage-emoji" data-id="0">🐷</span>
+            <span class="stage-emoji" data-id="1">🐶</span>
+        </div>
+    </div>
+
+    <div class="banquet-main-container">
+        <!-- 左侧三桌 -->
+        <div class="table-column left-column">
+            <div class="round-table-wrap">
+                <div class="table-name-tag">双方亲友</div>
+                <div class="round-table" data-table="left1">
+                    <div class="table-food-emoji">🍤🍰🐟🍗<br>🍇🥣🦀🥬</div>
+                    <div class="table-circle">
+                        <div class="seats-ring"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="round-table-wrap">
+                <div class="table-name-tag">极方亲友</div>
+                <div class="round-table" data-table="left2">
+                    <div class="table-food-emoji">🍤🍰🐟🍗<br>🍇🥣🦀🥬</div>
+                    <div class="table-circle">
+                        <div class="seats-ring"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="round-table-wrap">
+                <div class="table-name-tag">极方亲友</div>
+                <div class="round-table" data-table="left3">
+                    <div class="table-food-emoji">🍤🍰🐟🍗<br>🍇🥣🦀🥬</div>
+                    <div class="table-circle">
+                        <div class="seats-ring"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 中间走廊 -->
+        <div class="center-corridor">
+            <div class="walk-member-group" id="walkMemberGroup">
+                <span class="walk-emoji" data-id="0">🐷</span>
+                <span class="walk-emoji" data-id="1">🐶</span>
+            </div>
+        </div>
+        <!-- 右侧三桌 -->
+        <div class="table-column right-column">
+            <div class="round-table-wrap">
+                <div class="table-name-tag">双方亲友</div>
+                <div class="round-table" data-table="right1">
+                    <div class="table-food-emoji">🍤🍰🐟🍗<br>🍇🥣🦀🥬</div>
+                    <div class="table-circle">
+                        <div class="seats-ring"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="round-table-wrap">
+                <div class="table-name-tag">宝方亲友</div>
+                <div class="round-table" data-table="right2">
+                    <div class="table-food-emoji">🍤🍰🐟🍗<br>🍇🥣🦀🥬</div>
+                    <div class="table-circle">
+                        <div class="seats-ring"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="round-table-wrap">
+                <div class="table-name-tag">宝方亲友</div>
+                <div class="round-table" data-table="right3">
+                    <div class="table-food-emoji">🍤🍰🐟🍗<br>🍇🥣🦀🥬</div>
+                    <div class="table-circle">
+                        <div class="seats-ring"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 确认弹窗 -->
+    <div class="seat-confirm-modal hidden" id="seatConfirmModal">
+        <div class="confirm-card">
+            <p>确定选择这个座位落座吗？</p>
+            <div class="confirm-btns">
+                <button class="confirm-cancel">取消</button>
+                <button class="confirm-ok">确认落座</button>
+            </div>
+        </div>
+    </div>
+    <!-- 提示弹窗 -->
+    <div class="tip-modal hidden" id="tipModal">
+        <div class="tip-card">
+            <p id="tipText"></p>
+            <button class="tip-ok">知道了</button>
+        </div>
+    </div>
+</div>
 
     <script src="script.js"></script>
 </body>
