@@ -1356,9 +1356,9 @@ body.special-bg::before {
 .seat-btn{
     position: fixed;
     right: 20px;
-    bottom: 180px;
-    width: 54px;
-    height: 54px;
+    bottom: 80px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     border:none;
     background: rgba(245,175,200,0.85);
