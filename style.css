@@ -1400,7 +1400,7 @@ body.special-bg::before {
 .refresh-seat-btn{
     position:absolute;
     top:14px;
-    left:140px;
+    right:14px;
     border:none;
     background:rgba(255,255,255,0.4);
     backdrop-filter:blur(4px);
