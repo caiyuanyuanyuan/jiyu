@@ -1539,8 +1539,8 @@ body.special-bg::before {
     position:absolute;
 }
 .seat{
-    width: max(22px,3vh);
-    height: max(22px,3vh);
+    width: max(26px,3.2vh);
+    height: max(26px,3.2vh);
     border-radius:50%;
     background:rgba(255,255,255,0.45);
     border:1px solid #f4c8dc;
