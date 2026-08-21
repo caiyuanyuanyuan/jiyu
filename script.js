@@ -1,4 +1,4 @@
-// ========== 歌曲列表（17首合作曲） ==========
+// ========== 歌曲列表（18首合作舞台） ==========
 const songList = [
     '2018 试训时期《泡沫》',
     '2018.8.29《改变自己》',
@@ -16,8 +16,20 @@ const songList = [
     '2024.8.25《Senorita》',
     '2025.5.2《不值得》',
     '2025.8.30《过》',
-    '2026.2.1《暗香》'
+    '2026.2.1《暗香》',
+    '2026.07.25《春泥》'
 ];
+
+// 舞台照片（索引与 songList 一一对应）
+const songImgNames = [
+    '泡沫.jpg', '改变自己.jpg', 'Because of you.jpg',
+    '只对你有感觉.jpg', 'R&B all right.jpg', '诀爱.jpg',
+    '流浪记.jpg', 'Rolling In The Deep.jpg', '连名带姓.jpg',
+    '勇敢.jpg', 'Bite me.jpg', '笼.jpg',
+    'Paris In The Rain.jpg', 'Senorita.jpg', '不值得.jpg',
+    '过.jpg', '暗香.jpg', '春泥.jpg'
+];
+
 // 不参与歌词挑战的歌曲索引
 const noChallengeSongs = [2, 4, 7, 10, 12, 13];
 
@@ -133,6 +145,14 @@ const lyricData = {
             { text: '难忘缠绵细语时', answer: '' },
             { text: '用你笑容为我____', answer: '祭奠' }
         ]
+    },
+    17: { // 春泥
+        lines: [
+            { text: '那些____ 落在____里', answers: ['痛的记忆', '春的泥土'] },
+            { text: '滋养了大地 ____', answer: '开出下一个花季' },
+            { text: '风中____ 滴滴____', answers: ['你的泪滴', '落在回忆里'] },
+            { text: '让我们____', answer: '取名叫做珍惜' }
+        ]
     }
 };
 
@@ -192,6 +212,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initInviteName(); // 新增
     initLyricChallenge(); // 新增
     initBanquetPage();
+    initSweetChoice();
     
     // 恢复专属背景
     if (safeStorage.getItem('jiyu_special_bg') === '1') {
@@ -317,15 +338,6 @@ function initTimeline() {
     const songName = document.getElementById('songName');
     const closeBtn = document.getElementById('songClose');
     const challengeBtn = document.getElementById('lyricChallengeBtn');
-
-    const songImgNames = [
-        '泡沫.jpg', '改变自己.jpg', 'Because of you.jpg',
-        '只对你有感觉.jpg', 'R&B all right.jpg', '诀爱.jpg',
-        '流浪记.jpg', 'Rolling In The Deep.jpg', '连名带姓.jpg',
-        '勇敢.jpg', 'Bite me.jpg', '笼.jpg',
-        'Paris In The Rain.jpg', 'Senorita.jpg', '不值得.jpg',
-        '过.jpg', '暗香.jpg'
-    ];
 
     const center = document.createElement('div');
     center.className = 'timeline-center';
@@ -474,22 +486,15 @@ function drawLines() {
 function updateProgress() {
     const count = unlockedSongs.length;
     document.getElementById('unlockCount').textContent = count;
-    document.getElementById('progressFill').style.width = (count / 17 * 100) + '%';
+    const total = songList.length;
+    document.getElementById('totalSongCount').textContent = total;
+    document.getElementById('progressFill').style.width = (count / total * 100) + '%';
 }
 
 // 更新解锁封面栏
 function updateUnlockCards() {
     const container = document.getElementById('unlockCards');
     const previousScrollLeft = container.scrollLeft;
-    const songImgNames = [
-        '泡沫.jpg', '改变自己.jpg', 'Because of you.jpg',
-        '只对你有感觉.jpg', 'R&B all right.jpg', '诀爱.jpg',
-        '流浪记.jpg', 'Rolling In The Deep.jpg', '连名带姓.jpg',
-        '勇敢.jpg', 'Bite me.jpg', '笼.jpg',
-        'Paris In The Rain.jpg', 'Senorita.jpg', '不值得.jpg',
-        '过.jpg', '暗香.jpg'
-    ];
-
     container.replaceChildren();
     for (let i = 0; i < songList.length; i++) {
         const unlocked = unlockedSongs.includes(i);
@@ -586,7 +591,7 @@ function initUnlockScroller() {
 
 // 检查是否全部解锁
 function checkAllUnlocked() {
-    if (unlockedSongs.length === 17) {
+    if (unlockedSongs.length === songList.length) {
         triggerFullEaster();
     }
 }
@@ -658,9 +663,14 @@ function initLyricChallenge() {
             const p = document.createElement('p');
             p.className = 'lyric-line';
             
-            if (line.answer) {
-                p.innerHTML = line.text.replace('____', 
-                    `<input type="text" class="lyric-blank" data-answer="${line.answer}" maxlength="6">`);
+            const answers = Array.isArray(line.answers) ? line.answers : (line.answer ? [line.answer] : []);
+            if (answers.length) {
+                let answerIndex = 0;
+                p.innerHTML = line.text.replace(/____/g, () => {
+                    const answer = answers[answerIndex++] || '';
+                    const maxLength = Math.max(6, answer.length + 2);
+                    return `<input type="text" class="lyric-blank" data-answer="${answer}" maxlength="${maxLength}">`;
+                });
             } else {
                 p.textContent = line.text;
             }
@@ -948,6 +958,15 @@ function spawnPetalConfetti() {
     }
 }
 
+// ========== 糖点二选一 ==========
+function initSweetChoice() {
+    const btn = document.getElementById('sweetChoiceBtn');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+        window.location.href = 'https://caiyuanyuanyuan.github.io/jytd';
+    });
+}
+
 // 清空解锁记录
 document.getElementById('resetBtn').addEventListener('click', function() {
     if (!confirm('确定要清空所有解锁记录、连线进度、歌词通关记录吗？')) return;
@@ -975,6 +994,49 @@ if (!userId) {
 let seatData = null;
 let pendingSeat = null;
 
+// 婚宴大厅 + 五个包厢。所有房间复用同一套六桌布局，但云端座位键彼此独立。
+const BANQUET_ROOMS = [
+    { id: 'hall', label: '婚宴大厅' },
+    { id: 'box1', label: '一号包厢' },
+    { id: 'box2', label: '二号包厢' },
+    { id: 'box3', label: '三号包厢' },
+    { id: 'box4', label: '四号包厢' },
+    { id: 'box5', label: '五号包厢' }
+];
+const BANQUET_TABLE_IDS = ['left1', 'left2', 'left3', 'right1', 'right2', 'right3'];
+let currentBanquetRoom = 'hall';
+
+function getSeatStorageKey(baseTableId, roomId = currentBanquetRoom) {
+    return roomId === 'hall' ? baseTableId : `${roomId}_${baseTableId}`;
+}
+
+function ensureSeatSchema() {
+    if (!seatData || typeof seatData !== 'object') seatData = {};
+    if (!seatData.seats || typeof seatData.seats !== 'object') seatData.seats = {};
+
+    BANQUET_ROOMS.forEach(room => {
+        BANQUET_TABLE_IDS.forEach(baseTableId => {
+            const key = getSeatStorageKey(baseTableId, room.id);
+            const old = Array.isArray(seatData.seats[key]) ? seatData.seats[key] : [];
+            seatData.seats[key] = Array.from({ length: 8 }, (_, idx) => old[idx] ?? null);
+        });
+    });
+}
+
+function setBanquetRoom(roomId) {
+    if (!BANQUET_ROOMS.some(room => room.id === roomId)) return;
+    currentBanquetRoom = roomId;
+    const room = BANQUET_ROOMS.find(item => item.id === roomId);
+    document.querySelectorAll('.room-nav-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.room === roomId);
+    });
+    const label = document.getElementById('stageRoomLabel');
+    if (label) label.textContent = room.label;
+    pendingSeat = null;
+    document.getElementById('seatConfirmModal')?.classList.add('hidden');
+    renderAllSeat();
+}
+
 // 云端读取座位
 async function loadRemoteSeat() {
     try {
@@ -982,6 +1044,7 @@ async function loadRemoteSeat() {
         if (!res.ok) throw new Error("读取失败");
         const json = await res.json();
         seatData = json.record;
+        ensureSeatSchema();
         safeStorage.setItem("seatBackup", JSON.stringify(seatData));
         renderAllSeat();
         return true;
@@ -989,6 +1052,7 @@ async function loadRemoteSeat() {
         console.warn("云端读取失败", err);
         const backup = safeStorage.getItem("seatBackup");
         if(backup) seatData = JSON.parse(backup);
+        ensureSeatSchema();
         showTip("⚠️网络异常，加载本地缓存座位");
         renderAllSeat();
         return false;
@@ -997,6 +1061,7 @@ async function loadRemoteSeat() {
 
 // 云端写入座位（Header使用X-Access-Key 解决401）
 async function saveRemoteSeat() {
+    ensureSeatSchema();
     try {
         const res = await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}`, {
             method:"PUT",
@@ -1027,6 +1092,15 @@ function initBanquetPage(){
     const confirmCancel = confirmModal.querySelector(".confirm-cancel");
     const confirmOk = confirmModal.querySelector(".confirm-ok");
     const tipOk = tipModal.querySelector(".tip-ok");
+    const roomButtons = document.querySelectorAll(".room-nav-btn");
+
+    roomButtons.forEach(btn => {
+        btn.addEventListener("click", async () => {
+            setBanquetRoom(btn.dataset.room);
+            await loadRemoteSeat();
+            renderAllSeat();
+        });
+    });
 
     // 生成8个环形座位
     document.querySelectorAll(".round-table").forEach(table=>{
@@ -1048,10 +1122,11 @@ function initBanquetPage(){
 
             // 点击空位
             seat.addEventListener("click",async ()=>{
-                const tid = seat.dataset.table;
+                const baseTableId = seat.dataset.table;
                 const sid = Number(seat.dataset.seatIdx);
                 await loadRemoteSeat();
-                if(!seatData?.seats) return;
+                ensureSeatSchema();
+                const tid = getSeatStorageKey(baseTableId);
                 if(seatData.seats[tid][sid] !== null){
                     showTip("该座位已经被占用！");
                     return;
@@ -1064,6 +1139,7 @@ function initBanquetPage(){
 
     // 打开婚宴页面
     seatBtn.addEventListener("click", async () => {
+        setBanquetRoom('hall');
         banquetPage.classList.remove("hidden");
         document.body.classList.add("banquet-open");
         resetEntrance();
@@ -1171,9 +1247,10 @@ function showTip(text){
 
 // 渲染全部座位，占用显示✨
 function renderAllSeat(){
-    if(!seatData?.seats) return;
+    if(!seatData) return;
+    ensureSeatSchema();
     document.querySelectorAll(".seat").forEach(seat=>{
-        const tid = seat.dataset.table;
+        const tid = getSeatStorageKey(seat.dataset.table);
         const sid = Number(seat.dataset.seatIdx);
         const occupier = seatData.seats[tid][sid];
         if(occupier !== null){

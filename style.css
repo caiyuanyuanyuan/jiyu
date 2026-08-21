@@ -2515,3 +2515,128 @@ body.banquet-open {
     from { opacity: 1; transform: translateY(18px) scale(.72); }
     to { opacity: 1; transform: translateY(0) scale(1); }
 }
+
+/* ========== 2026.07.25 春泥新增功能 ========== */
+.sweet-choice-btn {
+    position: fixed;
+    top: calc(var(--safe-top, 0px) + 126px);
+    left: calc(var(--safe-left, 0px) + 14px);
+    min-width: 92px;
+    height: 38px;
+    padding: 0 14px;
+    border-radius: 19px;
+    border: 1px solid rgba(255,255,255,.78);
+    background: rgba(255,255,255,.72);
+    color: #a33d70;
+    font-family: "KaiTi", "STKaiti", "楷体", serif;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: 0 7px 20px rgba(119, 41, 77, .16);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    transition: transform .2s ease, background .2s ease;
+}
+
+.sweet-choice-btn:hover {
+    transform: translateY(-1px) scale(1.03);
+    background: rgba(255,255,255,.88);
+}
+
+.sweet-choice-btn:active {
+    transform: scale(.96);
+}
+
+/* ========== 婚宴包厢导航 ========== */
+.banquet-room-nav {
+    position: absolute;
+    top: calc(var(--safe-top, 0px) + 48px);
+    left: calc(var(--safe-left, 0px) + 7px);
+    z-index: 32;
+    width: clamp(62px, 17vw, 82px);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 6px;
+    border: 1px solid rgba(255,255,255,.7);
+    border-radius: 15px;
+    background: rgba(255,255,255,.48);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 22px rgba(116, 42, 76, .12);
+}
+
+.room-nav-btn {
+    width: 100%;
+    min-height: 25px;
+    padding: 4px 3px;
+    border: 1px solid rgba(225, 141, 177, .4);
+    border-radius: 9px;
+    background: rgba(255,255,255,.66);
+    color: #9c3f69;
+    font-family: "KaiTi", "STKaiti", "楷体", serif;
+    font-size: clamp(10px, 2.8vw, 12px);
+    line-height: 1.1;
+    cursor: pointer;
+    box-shadow: 0 2px 7px rgba(116, 42, 76, .08);
+    transition: transform .18s ease, background .18s ease, color .18s ease;
+}
+
+.room-nav-btn:hover {
+    transform: translateX(2px);
+}
+
+.room-nav-btn.active {
+    color: #fff;
+    font-weight: bold;
+    background: linear-gradient(135deg, #e891b6, #cf6595);
+    border-color: rgba(255,255,255,.78);
+    box-shadow: 0 4px 11px rgba(171, 73, 117, .2);
+}
+
+.stage-room-label {
+    position: relative;
+    z-index: 3;
+    margin-top: -4px;
+    margin-bottom: 4px;
+    color: rgba(151, 55, 99, .76);
+    font-size: clamp(11px, 3.2vw, 14px);
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+@media (max-width: 420px) {
+    .banquet-room-nav {
+        top: calc(var(--safe-top, 0px) + 45px);
+        width: 61px;
+        gap: 3px;
+        padding: 4px;
+    }
+
+    .room-nav-btn {
+        min-height: 22px;
+        padding: 3px 2px;
+        font-size: 10px;
+    }
+
+    .sweet-choice-btn {
+        min-width: 86px;
+        height: 35px;
+        font-size: 12px;
+    }
+}
+
+@media (orientation: landscape) and (max-height: 540px) {
+    .banquet-room-nav {
+        top: calc(var(--safe-top, 0px) + 34px);
+        width: 60px;
+        gap: 2px;
+        padding: 3px;
+    }
+
+    .room-nav-btn {
+        min-height: 18px;
+        padding: 2px;
+        font-size: 9px;
+    }
+}
