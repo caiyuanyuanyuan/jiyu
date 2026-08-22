@@ -2520,10 +2520,10 @@ body.banquet-open {
 .sweet-choice-btn {
     position: fixed;
     top: calc(var(--safe-top, 0px) + 126px);
-    left: calc(var(--safe-left, 0px) + 14px);
-    min-width: 40px;
+    left: calc(var(--safe-left, 0px) + 10px);
+    min-width: 30px;
     height: 38px;
-    padding: 0 14px;
+    padding: 0 8px;
     border-radius: 19px;
     border: 1px solid rgba(255,255,255,.78);
     background: rgba(255,255,255,.72);
