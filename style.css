@@ -1375,6 +1375,28 @@ body.special-bg::before {
     background: #ec9cb9;
 }
 
+.seat-btn1{
+    position: fixed;
+    left: 14px;
+    top: 140px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border:none;
+    background: rgba(245,175,200,0.85);
+    color:#fff;
+    font-size:14px;
+    box-shadow: 0 0 14px #f2b8d0;
+    backdrop-filter: blur(6px);
+    z-index:99;
+    cursor:pointer;
+    transition:0.3s;
+}
+.seat-btn1:hover{
+    transform:scale(1.08);
+    background: #ec9cb9;
+}
+
 .banquet-page{
     position:fixed;
     inset:0;
