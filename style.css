@@ -1375,7 +1375,7 @@ body.special-bg::before {
     background: #ec9cb9;
 }
 
-.seat-btn1{
+.seat-td{
     position: fixed;
     left: 14px;
     top: 140px;
@@ -1392,10 +1392,7 @@ body.special-bg::before {
     cursor:pointer;
     transition:0.3s;
 }
-.seat-btn1:hover{
-    transform:scale(1.08);
-    background: #ec9cb9;
-}
+
 
 .banquet-page{
     position:fixed;
