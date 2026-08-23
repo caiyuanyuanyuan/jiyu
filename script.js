@@ -213,6 +213,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initLyricChallenge(); // 新增
     initBanquetPage();
     initSweetChoice();
+    initpingtu();
+    inithecheng();
     
     // 恢复专属背景
     if (safeStorage.getItem('jiyu_special_bg') === '1') {
@@ -964,6 +966,22 @@ function initSweetChoice() {
     if (!btn) return;
     btn.addEventListener('click', () => {
         window.location.href = 'https://caiyuanyuanyuan.github.io/jytd';
+    });
+}
+
+function initpingtu() {
+    const btn = document.getElementById('pingtuBtn');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+        window.location.href = 'https://caiyuanyuanyuan.github.io/jypt';
+    });
+}
+
+function inithecheng() {
+    const btn = document.getElementById('hechengBtn');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+        window.location.href = 'https://jy-dengshen-bluff-game-d5b2ca9c291e.webapps.tcloudbase.com/';
     });
 }
 
