@@ -1393,6 +1393,41 @@ body.special-bg::before {
     transition:0.3s;
 }
 
+.seat-pt{
+    position: fixed;
+    left: 14px;
+    top: 200px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border:none;
+    background: rgba(245,175,200,0.85);
+    color:#fff;
+    font-size:14px;
+    box-shadow: 0 0 14px #f2b8d0;
+    backdrop-filter: blur(6px);
+    z-index:99;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.seat-hc{
+    position: fixed;
+    left: 14px;
+    top: 260px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border:none;
+    background: rgba(245,175,200,0.85);
+    color:#fff;
+    font-size:14px;
+    box-shadow: 0 0 14px #f2b8d0;
+    backdrop-filter: blur(6px);
+    z-index:99;
+    cursor:pointer;
+    transition:0.3s;
+}
 
 .banquet-page{
     position:fixed;
